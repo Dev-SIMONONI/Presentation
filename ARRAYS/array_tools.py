@@ -1,57 +1,64 @@
 class Arrays:
-    def __init__(self):
+
+    
+    def __init__(self,value: list):
+
+        self.value:list[str]= value
         
-        pass
 
 
-    def add_in_list(self, The_list, add_item):
+    def add_in_list(self, add_item):
         new = [add_item]
-        The_list = The_list + new
-        return The_list
+        self.value = self.value + new
+        return self.value
 
 
-    def replace_to_index(self, The_list, index, value):
-        new_list =[]
-        for item in range(len(The_list)):
+    def replace_to_index(self, index, value):
+
+        
+        for item in range(len(self.value)):
             if item == index:
-                The_list[item]= value
-        return The_list
+                self.value[item]= value
+        return self.value
     
         
-    def remove_last(self, The_list):
-        if len(The_list) == 0:
+    def remove_last(self):
+        if len(self.value) == 0:
             return []
         else:
-            new_list= []
-            for item in range(len(The_list)-1):
-               new_list=self.add_in_list(new_list, The_list[item])
+            new_list=[]
+            for item in range(len(self.value)-1):
+                new_list+=[self.value[item]]
+            self.value = new_list
             
-            return new_list
+            return self.value
     
 
-    def remove_value(self, The_list, value):
-        new_list=[]
-        for item in The_list:
-            if item != value:
-                new_list = self.add_in_list(new_list, item)
-        return new_list
+    def remove_value(self, char):
+        new_list = []
+        for item in self.value:
+            if item != char:
+                new_list += [item]
+            self.value = new_list
+        return self.value
     
 
-    def poper(self, The_list, value):
-    
-        if isinstance(value, int):
-            now_value=The_list[value]
-            
-
-            return self.remove_value(The_list, now_value)
+    def poper(self, option = -1):
         
-        elif isinstance(value, str):
+    
+        if isinstance(option, int):
+            if option > len(self.value):
+               return "Index Error Out of Range"
+            else:
+                now_value=self.value[option]
             
-
-            return self.remove_value(The_list, value)
+                return self.remove_value( now_value)
+        
         
         else:
-            return f"Type Error: invalid value Type  {value}"
+            return "Invalid pop only works with index"
+        
+    
 
                     
             
