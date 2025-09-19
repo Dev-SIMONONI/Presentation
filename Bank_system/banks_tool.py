@@ -32,7 +32,7 @@ class Account(Bank):
         self.acc_type:str=types
         self.account_number:int=random.randint(1000000000, 9000000000)
         self.total_bal:float=balance
-        self.transaction_count:list=0
+        self.transaction_count=0
         self.total_transaction:list=[]
         self.active_notify:bool= ismessage
         self.notify_type= message_type
